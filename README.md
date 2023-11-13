@@ -4,7 +4,7 @@ Extendable tool for analyzing RSA Attacks based on public keys, written in Rust.
 ## TODO
 * Add various sample attacks
   * Wiener's attack
-  * Coppersmith attack
+  * Coppersmith's attack
   * General number field sieve
 * Add analytic tools
   * Time analysis
