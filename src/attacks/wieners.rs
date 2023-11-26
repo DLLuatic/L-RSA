@@ -18,7 +18,7 @@ pub fn wiener(pub_exp: i32, comp_num: i32) -> i32 {
     let mut continued_fra_form = Vec::new();
     let cff = as_continued_fraction(&comp_num, &pub_exp, continued_fra_form);
     let (ks, ds) = find_convergents(cff);
-    // At this point, d might be amoung ds.
+    // At this point, d might be among ds.
     for i in 2..ds.len() {
         if ks[i] == 0 {
             continue;
