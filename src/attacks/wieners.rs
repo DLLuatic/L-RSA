@@ -23,13 +23,14 @@ pub fn wiener(pub_exp: i32, comp_num: i32) -> i32 {
         if ks[i] == 0 {
             continue;
         } else if ds[i] as f32 > ((comp_num as f32).sqrt().sqrt() / 3.0) {
-            panic!("Wiener's attack failed. Private exponent too large.");
+            panic!("Wiener's attack failed. Private exponent too large!");
         }
         let phi_n = ((&pub_exp * &ds[i]) - 1) / &ks[i];
         if check(phi_n as f32, &(comp_num as f32)) {
             return ds[i];
         }
     }
+    panic!("Wiener's attack failed. Not a single d found!");
 }
 
 // The "as_continued_fraction" function is recursive, so we define its result
@@ -70,9 +71,7 @@ fn check(phi_n: f32, n: &f32) -> bool {
 // TODO: Add some Test documentation here
 #[cfg(test)]
 mod tests {
-    use crate::attacks::wieners::as_continued_fraction;
-    use crate::attacks::wieners::find_convergents;
-    use crate::attacks::wieners::check;
+    use crate::attacks::wieners::{as_continued_fraction, find_convergents, check};
     #[test]
     fn cf_returns() {
         let mut continued_fra_form = Vec::new();
@@ -88,6 +87,6 @@ mod tests {
 
     #[test]
     fn check_returns() {
-        assert_eq!(check(89964 as f32, 90581 as f32), true)
+        assert_eq!(check(89964 as f32, &(90581 as f32)), true)
     }
 }
