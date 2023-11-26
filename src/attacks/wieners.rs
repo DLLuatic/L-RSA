@@ -1,6 +1,6 @@
 /* Simple implementation of the Wiener's attack on the RSA cryptsystem.
 
-This only works when d < (N^(1/4))/3. Given this conditions is true, k/d is
+This only works when d < (N^(1/4))/3. Given this condition is true, k/d is
 among the continued fractions expansion convergents of e/N.
 
 To actually get d, we
