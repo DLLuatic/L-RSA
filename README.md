@@ -1,5 +1,5 @@
 # l_rsa
-Extendable tool for analyzing RSA Attacks based on public keys, written in Rust. Work in progress.
+Extendable tool for analyzing RSA Attacks based on public information, written in Rust. Work in progress.
 
 ## TODO
 * Add various sample attacks
