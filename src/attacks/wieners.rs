@@ -10,8 +10,7 @@ To actually get d, we
 4) If it does, return d. This constitutes a total break.
 
 If we don't end up with a valid d before d > (N^(1/4))/3, then d is too large
-for wiener's attack.
-*/
+for wiener's attack. */
 
 // Central function. This shall derive d from e (pub_exp) and N (comp_num).
 pub fn wiener(pub_exp: i32, comp_num: i32) -> i32 {
