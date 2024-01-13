@@ -3,3 +3,4 @@
 // your-attack.rs must be a valid rust file in the attacks
 // folder.
 pub mod wieners;
+pub mod weak_hastad_broadcast;
