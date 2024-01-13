@@ -1,6 +1,6 @@
 [package]
 name = "l_rsa"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 description = "Extendable tool for analyzing RSA Attacks based on public keys."
 authors = ["Luatic"]
