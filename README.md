@@ -3,7 +3,6 @@ Extendable tool for analyzing RSA Attacks based on public information, written i
 
 ## TODO
 * Add various sample attacks
-  * Hastad broadcast attack
   * General number field sieve
 * Add analytic tools
   * Time analysis
