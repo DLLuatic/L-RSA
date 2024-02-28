@@ -1,9 +1,9 @@
 /* Implementation of a weak variant of the hastad broadcast attack */
 
 // Input of shape ([m1, m2, ...], [n1, n2, ...])
-pub fn weak_hastad(message_vector: Vec<i64>, n_vector: Vec<i64>) -> f64 {
+pub fn weak_hastad(message_vector: Vec<i128>, n_vector: Vec<i128>) -> f64 {
     let (mut x, factor) = crt_constructive_proof(&message_vector, &n_vector);
-    let n_prod: i64 = n_vector.iter().product();
+    let n_prod: i128 = n_vector.iter().product();
     while x < 0 {
         x += factor;
         if n_prod < x {
@@ -22,15 +22,14 @@ pub fn weak_hastad(message_vector: Vec<i64>, n_vector: Vec<i64>) -> f64 {
 // This will output a solution to the system of congruences (x), alongside a
 // factor (a), by which any multiple of that factor will also be a solution to
 // the system of congruences, in the shape (x, a)
-fn crt_constructive_proof(a_vec: &Vec<i64>, n_vec: &Vec<i64>) -> (i64, i64) {
+fn crt_constructive_proof(a_vec: &Vec<i128>, n_vec: &Vec<i128>) -> (i128, i128) {
     let mut comb_n = n_vec[0];
-    let mut x_fin: i64 = a_vec[0]; // failsave value
+    let mut x_fin: i128 = a_vec[0]; // failsave value
     for i in 1..n_vec.len() {
-        let (gcd, x, y): (i64, i64, i64);
+        let (gcd, x, y): (i128, i128, i128);
         if comb_n > n_vec[i] {
             (gcd, x, y) = extended_euclidean_algorithm(comb_n, n_vec[i]);
         } else {
-            println!("[WHB]: SWAPPING comb_n and n_vec[i]");
             (gcd, y, x) = extended_euclidean_algorithm(n_vec[i], comb_n);
         }
         if gcd != 1 {
@@ -43,11 +42,11 @@ fn crt_constructive_proof(a_vec: &Vec<i64>, n_vec: &Vec<i64>) -> (i64, i64) {
 }
 
 // Returns (gcd, x, y (Bezout identity factors))
-fn extended_euclidean_algorithm(a: i64, b: i64) -> (i64, i64, i64) {
+fn extended_euclidean_algorithm(a: i128, b: i128) -> (i128, i128, i128) {
     let mut rs = vec![a, b];
     let mut svec = vec![1, 0];
     let mut tvec = vec![0, 1];
-    let mut q: i64;
+    let mut q: i128;
     while rs[rs.len() - 1] != 0 {
         q = rs[rs.len() - 2] / rs[rs.len() - 1];
         rs.push(rs[rs.len() - 2] - (q * rs[rs.len() - 1]));

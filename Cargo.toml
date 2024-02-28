@@ -8,3 +8,4 @@ repository = "https://github.com/DLLuatic/l_rsa/"
 license-file = "LICENSE"
 
 [dependencies]
+rsa = "0.9.6"
